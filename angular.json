@@ -33,7 +33,7 @@
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": ["src/styles.scss"],
-            "scripts": []
+            "scripts": ["node_modules/tinycolor2/dist/tinycolor-min.js"]
           },
           "configurations": {
             "production": {
@@ -96,7 +96,7 @@
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": ["src/styles.scss"],
-            "scripts": []
+            "scripts": ["node_modules/tinycolor2/dist/tinycolor-min.js"]
           }
         }
       }

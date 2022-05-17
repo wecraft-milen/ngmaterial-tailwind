@@ -1,0 +1,55 @@
+@use "sass:map";
+@use "sass:color";
+@use "sass:string";
+@use "@angular/material" as mat;
+
+@mixin main($theme) {
+  $color: mat.get-color-from-palette($theme, color);
+  $primary: mat.get-color-from-palette($color, primary);
+  $accent: mat.get-color-from-palette($color, accent);
+  $warn: mat.get-color-from-palette($color, warn);
+
+  $secondary: mat.get-color-from-palette($color, _secondary);
+  $success: mat.get-color-from-palette($color, _success);
+  $info: mat.get-color-from-palette($color, _info);
+  $warning: mat.get-color-from-palette($color, _warning);
+  $danger: mat.get-color-from-palette($color, _danger);
+  $grey: mat.get-color-from-palette($color, _grey);
+
+  $foreground: map.get($theme, foreground);
+  $foreground: mat.get-color-from-palette($foreground, text);
+
+  $background: map.get($theme, background);
+  $background: mat.get-color-from-palette($background, background);
+
+  $colors: (
+    primary: mat-color($primary),
+    secondary: mat-color($secondary),
+    success: mat-color($success),
+    info: mat-color($info),
+    warning: mat-color($warning),
+    danger: mat-color($danger),
+    "grey": mat-color($grey),
+  );
+
+  @each $c, $v in $colors {
+    .mat-#{$c} {
+      &.mat-raised-button {
+        background-color: $v;
+        color: $background;
+      }
+
+      &.mat-stroked-button {
+        color: $v;
+      }
+
+      &.mat-stroked-button {
+        border-color: $v;
+      }
+
+      &.mat-button {
+        color: $v;
+      }
+    }
+  }
+}

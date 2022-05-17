@@ -1,10 +1,15 @@
-@use "./scss/color-config";
-@use "./scss/typography-config";
-
 @use "@angular/material" as mat;
 
-@import "./scss/material/palettes";
-@import "./scss/material/topography";
+@import "./app/styles/color-config";
+@import "./app/styles/typography-config";
+
+@import "@angular/material/theming";
+
+@import "./app/styles/material/themes/light-theme";
+@import "./app/styles/material/themes/dark-theme";
+@import "./app/styles/material/material-utilities";
+@import "./app/styles/material/palettes";
+@import "./app/styles/material/topography";
 
 @include mat.core($fontConfig);
 
@@ -13,27 +18,21 @@
 @tailwind components;
 @tailwind utilities;
 
-$ngmaterial-tailwind-primary: mat.define-palette($custom-primary);
-$ngmaterial-tailwind-accent: mat.define-palette(
-  mat.$pink-palette,
-  A200,
-  A100,
-  A400
-);
+@include mat.core($fontConfig);
+// @include angular-material-typography($fontConfig);
 
-$ngmaterial-tailwind-warn: mat.define-palette(mat.$red-palette);
+@mixin themes($theme) {
+  @include angular-material-theme($theme);
+  @include main($theme);
+}
 
-$ngmaterial-tailwind-theme: mat.define-light-theme(
-  (
-    color: (
-      primary: $ngmaterial-tailwind-primary,
-      accent: $ngmaterial-tailwind-accent,
-      warn: $ngmaterial-tailwind-warn,
-    ),
-  )
-);
+.dark-theme {
+  @include themes($my-dark-theme);
+}
 
-@include mat.all-component-themes($ngmaterial-tailwind-theme);
+.light-theme {
+  @include themes($my-light-theme);
+}
 
 html,
 body {

@@ -1,0 +1,60 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+@import "../palettes";
+
+$color-contast: 500;
+
+// material theme colors
+$primary: mat.define-palette($mat-primary, $color-contast);
+$accent: mat.define-palette(mat.$cyan-palette, $color-contast);
+$warn: mat.define-palette(mat.$red-palette, $color-contast);
+
+// custom theme colors
+$secondary: mat.define-palette($wm-secondary, $color-contast);
+$success: mat.define-palette($wm-success, $color-contast);
+$info: mat.define-palette($wm-info, $color-contast);
+$warning: mat.define-palette($wm-warning, $color-contast);
+$danger: mat.define-palette($wm-danger, $color-contast);
+$grey: mat.define-palette($wm-grey, $color-contast);
+
+$my-light-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $primary,
+      accent: $accent,
+      warn: $warn,
+    ),
+  )
+);
+
+$my-light-theme: map-merge(
+  $my-light-theme,
+  (
+    color:
+      map-merge(
+        map-get($my-light-theme, color),
+        (
+          _secondary: $secondary,
+          _success: $success,
+          _info: $info,
+          _warning: $warning,
+          _danger: $danger,
+          _grey: $grey,
+        )
+      ),
+    foreground:
+      map-merge(
+        mat.$light-theme-foreground-palette,
+        (
+          text: #303030,
+        )
+      ),
+    background:
+      map-merge(
+        mat.$light-theme-background-palette,
+        (
+          background: white,
+        )
+      ),
+  )
+);

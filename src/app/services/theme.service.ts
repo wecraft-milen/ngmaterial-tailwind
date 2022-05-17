@@ -38,7 +38,7 @@ export class ThemeService {
 
   async init(): Promise<void> {
     try {
-      // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+      // On page load or when changing themes, best to add inline in `head` to avoid FOUC (Flash Of Unstyled Content)
       let isDark = false;
 
       if (!this.window.localStorage.getItem(this.themeKey)) {

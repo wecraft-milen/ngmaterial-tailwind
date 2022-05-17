@@ -1,0 +1,5 @@
+@use "@angular/material" as mat;
+
+$fontConfig: mat.define-typography-config(
+  $font-family: theme("fontFamily.sans"),
+);

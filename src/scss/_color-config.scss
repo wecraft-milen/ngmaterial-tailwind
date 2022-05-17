@@ -1,0 +1,33 @@
+@use "@angular/material" as mat;
+
+:root {
+  --primary-50: #e5e6ea;
+  --primary-100: #bec0cb;
+  --primary-200: #9397a8;
+  --primary-300: #686d85;
+  --primary-400: #474d6a;
+  --primary-500: #272e50;
+  --primary-600: #232949;
+  --primary-700: #1d2340;
+  --primary-800: #171d37;
+  --primary-900: #0e1227;
+  --primary-A100: #667dff;
+  --primary-A200: #3352ff;
+  --primary-A400: #0026ff;
+  --primary-A700: #0022e6;
+
+  --primary-contrast-50: #000;
+  --primary-contrast-100: #000;
+  --primary-contrast-200: #000;
+  --primary-contrast-300: #000;
+  --primary-contrast-400: #fff;
+  --primary-contrast-500: #fff;
+  --primary-contrast-600: #fff;
+  --primary-contrast-700: #fff;
+  --primary-contrast-800: #fff;
+  --primary-contrast-900: #fff;
+  --primary-contrast-A100: #000;
+  --primary-contrast-A200: #fff;
+  --primary-contrast-A400: #fff;
+  --primary-contrast-A700: #fff;
+}

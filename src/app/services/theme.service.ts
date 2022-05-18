@@ -40,21 +40,17 @@ export class ThemeService {
     try {
       // On page load or when changing themes, best to add inline in `head` to avoid FOUC (Flash Of Unstyled Content)
       let isDark = false;
+      let isDarkMatchMedia = this.window.matchMedia(
+        '(prefers-color-scheme: dark)'
+      ).matches;
+      let key = this.window.localStorage.getItem(this.themeKey);
 
-      if (!this.window.localStorage.getItem(this.themeKey)) {
-        isDark = this.window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-        this.storeThemeData({
-          ...this.themeState,
-          isDark,
-          theme: isDark ? 'dark' : 'light',
-        });
+      if (key?.includes('isDark')) {
+        isDark = JSON.parse(key).isDark;
+      } else {
+        isDark = isDarkMatchMedia;
       }
 
-      const key: ThemeState = JSON.parse(
-        this.window.localStorage.getItem(this.themeKey) as string
-      );
-      isDark = key.isDark;
       const cssRootVariables = await lastValueFrom(this.loadRootVariables());
 
       Object.entries(cssRootVariables.colors).forEach(([k, v]) =>
@@ -81,7 +77,9 @@ export class ThemeService {
         this.htmlElement.classList.add(res.theme + '-theme');
         this.storeThemeData(res);
       });
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   switchTheme(): void {

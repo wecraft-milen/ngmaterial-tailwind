@@ -10,7 +10,7 @@ module.exports = {
 
   // presets: [],
 
-  darkMode: 'class', // or 'class'
+  darkMode: 'media', // or 'class'
 
   prefix: 'wm-',
 
